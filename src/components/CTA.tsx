@@ -27,23 +27,46 @@ export default function CTA() {
 
           {/* Email Signup */}
           <div className="max-w-md mx-auto mb-12">
-            <form className="flex flex-col sm:flex-row gap-3" onSubmit={(e) => e.preventDefault()}>
+            <form
+              className="flex flex-col sm:flex-row gap-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const email = form.querySelector('input[type="email"]') as HTMLInputElement;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (email && email.value && !emailPattern.test(email.value)) {
+                  email.setCustomValidity('Please enter a valid email address');
+                  email.reportValidity();
+                  return;
+                }
+
+                if (email) {
+                  email.setCustomValidity('');
+                  alert('Thank you for joining the campaign! (This is a demo - no data was collected)');
+                  email.value = '';
+                }
+              }}
+            >
               <div className="flex-1 relative">
-                <EnvelopeIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--gray-400)]" />
+                <EnvelopeIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--gray-400)]" aria-hidden="true" />
                 <input
                   type="email"
                   placeholder="Enter your email"
+                  required
                   className="w-full pl-12 pr-4 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-[var(--gold)] transition-colors"
+                  aria-label="Email address"
+                  aria-describedby="email-hint"
                 />
               </div>
               <button
                 type="submit"
-                className="px-8 py-4 bg-[var(--gold)] hover:bg-[var(--gold-light)] text-[var(--navy-dark)] font-bold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+                className="px-8 py-4 bg-[var(--gold)] hover:bg-[var(--gold-light)] text-[var(--navy-dark)] font-bold rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy)]"
               >
                 Join Us
               </button>
             </form>
-            <p className="text-white/40 text-sm mt-3">
+            <p id="email-hint" className="text-white/40 text-sm mt-3">
               By joining, you agree to receive updates. Unsubscribe anytime.
             </p>
           </div>

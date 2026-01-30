@@ -106,7 +106,7 @@ export default function Quotes() {
           </div>
 
           {/* Quote Content */}
-          <div className={`transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}>
+          <div className={`transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`} aria-live="polite" aria-atomic="true">
             <blockquote className="text-2xl sm:text-3xl md:text-4xl font-[var(--font-merriweather)] text-[var(--navy)] leading-relaxed mb-8">
               &ldquo;{currentQuote.text}&rdquo;
             </blockquote>
@@ -124,27 +124,29 @@ export default function Quotes() {
               </div>
 
               {/* Navigation */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3" role="group" aria-label="Quote navigation">
                 <button
                   onClick={prevQuote}
-                  className="p-3 rounded-full border border-[var(--gray-300)] hover:border-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-all duration-200"
+                  className="p-3 rounded-full border border-[var(--gray-300)] hover:border-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2"
                   aria-label="Previous quote"
+                  aria-controls="quote-display"
                 >
-                  <ChevronLeftIcon className="w-5 h-5" />
+                  <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
                 </button>
                 <button
                   onClick={nextQuote}
-                  className="p-3 rounded-full border border-[var(--gray-300)] hover:border-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-all duration-200"
+                  className="p-3 rounded-full border border-[var(--gray-300)] hover:border-[var(--navy)] hover:bg-[var(--navy)] hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2"
                   aria-label="Next quote"
+                  aria-controls="quote-display"
                 >
-                  <ChevronRightIcon className="w-5 h-5" />
+                  <ChevronRightIcon className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
           </div>
 
           {/* Progress Dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          <nav className="flex justify-center gap-2 mt-8" role="list" aria-label="Quote index">
             {quotes.map((_, index) => (
               <button
                 key={index}
@@ -157,15 +159,17 @@ export default function Quotes() {
                     }, 300);
                   }
                 }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2 ${
                   index === currentIndex
                     ? "w-8 bg-[var(--navy)]"
                     : "bg-[var(--gray-300)] hover:bg-[var(--gray-400)]"
                 }`}
                 aria-label={`Go to quote ${index + 1}`}
+                aria-current={index === currentIndex ? 'true' : 'false'}
+                role="listitem"
               />
             ))}
-          </div>
+          </nav>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[var(--navy)] rounded-full flex items-center justify-center border border-[var(--gold)]">
+              <div className="w-10 h-10 bg-[var(--navy)] rounded-full flex items-center justify-center border border-[var(--gold)]" aria-hidden="true">
                 <span className="text-white font-bold text-lg">N</span>
               </div>
               <div>
@@ -32,50 +32,54 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="font-bold text-white mb-4">Campaign</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#issues" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Issues
-                </a>
-              </li>
-              <li>
-                <a href="#record" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Record
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#join" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Join
-                </a>
-              </li>
-            </ul>
+            <nav role="navigation" aria-label="Footer campaign links">
+              <ul className="space-y-2" role="list">
+                <li>
+                  <a href="#issues" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Issues
+                  </a>
+                </li>
+                <li>
+                  <a href="#record" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Record
+                  </a>
+                </li>
+                <li>
+                  <a href="#about" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#join" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Join
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
 
           {/* Legal */}
           <div>
             <h4 className="font-bold text-white mb-4">Legal</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <nav role="navigation" aria-label="Footer legal links">
+              <ul className="space-y-2" role="list">
+                <li>
+                  <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Terms of Service
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-white/60 hover:text-[var(--gold)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy-dark)] rounded-sm">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
 

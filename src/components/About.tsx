@@ -78,29 +78,29 @@ export default function About() {
             {/* Fun Facts */}
             <div className="mt-8 p-6 bg-[var(--cream)] rounded-xl border-l-4 border-[var(--gold)]">
               <h3 className="font-bold text-[var(--navy)] mb-3">Did You Know?</h3>
-              <ul className="space-y-2 text-[var(--gray-600)]">
+              <ul className="space-y-2 text-[var(--gray-600)]" role="list">
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>His winery received a $2.9 million PPP loan that was later forgiven</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>He dined at the French Laundry while telling Californians to stay home</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>His children attended in-person private school while public schools remained closed</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>California lost up to $32 billion in unemployment fraud under his watch</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>Trump calls him "Newscum" and blames him personally for California's wildfires</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[var(--gold)]">•</span>
+                  <span className="text-[var(--gold)]" aria-hidden="true">•</span>
                   <span>He claims Trump blocked his Davos speaking slot in 2026</span>
                 </li>
               </ul>

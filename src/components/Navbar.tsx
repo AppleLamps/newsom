@@ -4,16 +4,26 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navLinks = [
-  { name: "Issues", href: "#issues" },
+  { name: "Priorities", href: "#issues" },
   { name: "Record", href: "#record" },
   { name: "About", href: "#about" },
-  { name: "Join", href: "#join" },
+  { name: "Join Us", href: "#join" },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close menu on escape key
   useEffect(() => {
@@ -65,19 +75,23 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--gray-200)]" role="navigation" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-6"
+        }`}
+      role="navigation"
+      aria-label="Main navigation"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2 rounded-sm" aria-label="Newsom 2028 Campaign Home">
-            <div className="w-10 h-10 bg-[var(--navy)] rounded-full flex items-center justify-center" aria-hidden="true">
-              <span className="text-white font-bold text-lg">N</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-[var(--navy)] font-bold text-xl tracking-tight">
+          <a href="#" className="group flex items-center gap-3 focus:outline-none" aria-label="Newsom 2028 Campaign Home">
+            <div className={`transition-all duration-300 ${scrolled ? "text-[var(--navy)]" : "text-white"}`}>
+              <span className="font-serif font-black text-2xl tracking-tighter">
                 NEWSOM
               </span>
-              <span className="text-[var(--gold)] font-bold text-xl">2028</span>
+              <span className={`ml-1 text-xs font-bold tracking-[0.3em] uppercase ${scrolled ? "text-[var(--gold)]" : "text-[var(--gold)]"}`}>
+                2028
+              </span>
             </div>
           </a>
 
@@ -87,19 +101,20 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-[var(--gray-700)] hover:text-[var(--navy)] font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2 rounded-sm px-2 py-1"
+                className={`text-sm tracking-widest uppercase font-medium transition-colors duration-300 hover:text-[var(--gold)] ${scrolled ? "text-[var(--navy-light)]" : "text-white/90"
+                  }`}
                 role="menuitem"
               >
                 {link.name}
               </a>
             ))}
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-4">
             <a
               href="#donate"
-              className="bg-[var(--campaign-red)] hover:bg-[var(--red-dark)] text-white px-6 py-2 rounded-full font-semibold transition-all duration-200 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2"
+              className={`px-6 py-2 rounded-sm text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-lg ${scrolled
+                  ? "bg-[var(--navy)] text-white hover:bg-[var(--navy-light)]"
+                  : "bg-[var(--white)] text-[var(--navy)] hover:bg-[var(--gold)] hover:text-white"
+                }`}
             >
               Donate
             </a>
@@ -109,7 +124,7 @@ export default function Navbar() {
           <button
             type="button"
             ref={menuButtonRef}
-            className="md:hidden p-2 text-[var(--gray-700)] focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2 rounded-sm"
+            className={`md:hidden p-2 rounded-sm ${scrolled ? "text-[var(--navy)]" : "text-white"}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-controls="mobile-menu"
             aria-expanded={mobileMenuOpen}
@@ -125,37 +140,50 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {mobileMenuOpen && (
+      <div
+        className={`fixed inset-0 z-40 bg-[var(--navy)] transition-transform duration-300 ease-in-out transform ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile menu"
+      >
+        <div className="flex justify-end p-6">
+          <button
+            type="button"
+            className="text-white p-2"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <XMarkIcon className="h-8 w-8" aria-hidden="true" />
+          </button>
+        </div>
+
         <div
           ref={menuRef}
           id="mobile-menu"
-          className="md:hidden bg-white border-t border-[var(--gray-200)]"
-          role="menu"
+          className="flex flex-col items-center justify-center h-[80vh] space-y-8"
           onKeyDown={handleKeyDown}
         >
-          <div className="px-4 py-4 space-y-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block text-[var(--gray-700)] hover:text-[var(--navy)] font-medium py-2 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2 rounded-sm px-2 py-1"
-                role="menuitem"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
-            ))}
+          {navLinks.map((link) => (
             <a
-              href="#donate"
-              className="block bg-[var(--campaign-red)] text-white px-6 py-3 rounded-full font-semibold text-center mt-4 focus:outline-none focus:ring-2 focus:ring-[var(--navy)] focus:ring-offset-2"
+              key={link.name}
+              href={link.href}
+              className="text-3xl font-serif font-bold text-white hover:text-[var(--gold)] transition-colors"
               role="menuitem"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Donate
+              {link.name}
             </a>
-          </div>
+          ))}
+          <a
+            href="#donate"
+            className="mt-8 bg-[var(--gold)] text-[var(--navy-dark)] px-10 py-4 rounded-full text-lg font-bold tracking-widest uppercase"
+            role="menuitem"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Donate
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

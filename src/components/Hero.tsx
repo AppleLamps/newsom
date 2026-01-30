@@ -1,92 +1,64 @@
 "use client";
 
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[var(--navy)] via-[var(--navy-light)] to-[var(--navy-dark)]" aria-labelledby="hero-heading">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" aria-hidden="true">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <section className="relative h-screen flex flex-col justify-center items-center overflow-hidden bg-[var(--navy-dark)] text-white" aria-labelledby="hero-heading">
+      {/* Background - Atmospheric Gradient */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[var(--navy-light)] via-[var(--navy-dark)] to-black opacity-80" />
 
-      {/* Gold accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-50" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-50" aria-hidden="true" />
+      {/* Subtle Animated Grain/Noise (Simulated with CSS) */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] mix-blend-overlay pointer-events-none"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20" aria-live="polite">
-          <span className="w-2 h-2 bg-[var(--gold)] rounded-full animate-pulse" aria-hidden="true" />
-          <span className="text-white/95 text-sm font-medium tracking-wide uppercase">
-            Campaign 2028
-          </span>
-        </div>
+      {/* Hero Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
 
-        {/* Main Headline */}
-        <h1 id="hero-heading" className="font-[var(--font-merriweather)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-6">
-          A New California
-          <span className="block text-[var(--gold)] drop-shadow-md">For America</span>
+        {/* Presidential Eyebrow */}
+        <span className="mb-6 inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-[var(--gold)] text-xs font-bold tracking-[0.2em] uppercase animate-fade-in-up">
+          The 2028 Campaign
+        </span>
+
+        {/* Main Headline - High visual impact */}
+        <h1 id="hero-heading" className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-8 animate-fade-in-up animate-delay-100">
+          <span className="block text-white">A New</span>
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[var(--gold)] to-[var(--gold-light)]">California</span>
         </h1>
 
-        {/* Subheadline - Satirical undertone */}
-        <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-4 font-light">
-          Bringing the Golden State&apos;s proven leadership to the White House.
-        </p>
-        <p className="text-lg text-white/70 max-w-2xl mx-auto mb-12 italic">
-          &ldquo;What worked for Sacramento will work for Washington.&rdquo;
+        {/* Subheadline */}
+        <p className="max-w-2xl text-lg md:text-xl text-[var(--gray-300)] font-light leading-relaxed mb-12 animate-fade-in-up animate-delay-200">
+          Bringing the Golden State’s progressive vision to a nation in need of bold, decisive leadership. The future starts West.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        {/* Minimalist CTAs */}
+        <div className="flex flex-col sm:flex-row gap-6 items-center animate-fade-in-up animate-delay-300">
           <a
             href="#join"
-            className="group flex items-center gap-2 bg-[var(--gold)] hover:bg-[var(--gold-light)] text-[var(--navy-dark)] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:ring-offset-2 focus:ring-offset-[var(--navy)]"
+            className="group relative px-8 py-4 bg-[var(--white)] text-[var(--navy-dark)] font-medium text-sm tracking-widest uppercase overflow-hidden transition-all hover:bg-[var(--gold)]"
           >
-            Join the Movement
-            <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            <span className="relative z-10">Join the Movement</span>
           </a>
           <a
-            href="#issues"
-            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--navy)]"
+            href="#vision"
+            className="group flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm tracking-widest uppercase"
           >
-            See the Vision
+            <span>Explore The Vision</span>
+            <span className="block w-8 h-[1px] bg-white/30 group-hover:bg-white transition-colors" />
           </a>
         </div>
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto" role="list" aria-label="Campaign statistics">
-          {[
-            { number: "16", label: "Years in Office" },
-            { number: "$32B", label: "Fraud Lost" },
-            { number: "#1", label: "Homeless Rate" },
-            { number: "216K", label: "Left in 2025" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10"
-              role="listitem"
-            >
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--gold)] mb-1" aria-label={stat.label}>
-                {stat.number}
-              </div>
-              <div className="text-sm text-white/70 uppercase tracking-wider">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" aria-hidden="true">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-2 bg-white/50 rounded-full" />
-        </div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-pulse opacity-50">
+        <span className="text-[10px] tracking-widest uppercase text-white/60">Scroll</span>
+        <ChevronDownIcon className="w-4 h-4 text-white/60" />
       </div>
+
+      {/* Decorative Elements */}
+      <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-[var(--navy-dark)] to-transparent opacity-80 z-20" />
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[var(--background)] to-transparent z-20" />
     </section>
   );
 }

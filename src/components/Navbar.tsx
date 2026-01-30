@@ -29,14 +29,16 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   // Focus trap for mobile menu
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== 'Tab') return;
 
     if (!menuRef.current) return;
 
     const focusableElements = menuRef.current.querySelectorAll(
-      'a, button'
+      'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled])'
     ) as NodeListOf<HTMLElement>;
+
+    if (focusableElements.length === 0) return;
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];

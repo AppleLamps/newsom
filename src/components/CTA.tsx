@@ -21,7 +21,7 @@ export default function CTA() {
             Help Us Make History
           </h2>
           <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-            Together, we can bring California's proven leadership to Washington. 
+            Together, we can bring California&apos;s proven leadership to Washington. 
             Because America deserves the same results the Golden State has achieved.
           </p>
 
@@ -101,7 +101,7 @@ export default function CTA() {
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Volunteer</h3>
             <p className="text-white/60 mb-4">
-              Join thousands of Californians who've already left the state.
+              Join thousands of Californians who&apos;ve already left the state.
             </p>
             <span className="inline-flex items-center gap-2 text-[var(--gold)] font-semibold group-hover:gap-3 transition-all">
               Get Involved →
@@ -118,7 +118,7 @@ export default function CTA() {
             </div>
             <h3 className="text-xl font-bold text-white mb-3">Share</h3>
             <p className="text-white/60 mb-4">
-              Spread the word. Let everyone know what's coming.
+              Spread the word. Let everyone know what&apos;s coming.
             </p>
             <span className="inline-flex items-center gap-2 text-[var(--gold)] font-semibold group-hover:gap-3 transition-all">
               Share Now →
@@ -129,7 +129,7 @@ export default function CTA() {
         {/* Disclaimer */}
         <div className="mt-16 text-center">
           <p className="text-white/40 text-sm max-w-2xl mx-auto">
-            Paid for by Newsom 2028. Not authorized by any candidate or candidate's committee. 
+            Paid for by Newsom 2028. Not authorized by any candidate or candidate&apos;s committee. 
             This is a satirical website. Please do not actually donate.
           </p>
         </div>

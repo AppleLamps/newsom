@@ -21,7 +21,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/60 max-w-sm mb-4">
-              Bringing California's proven leadership to Washington. 
+              Bringing California&apos;s proven leadership to Washington. 
               Because America deserves the same results.
             </p>
             <p className="text-[var(--gold)] text-sm font-semibold">
@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="text-center md:text-left">
               <p className="text-white/40 text-xs max-w-2xl">
                 <span className="text-[var(--campaign-red)] font-semibold">PAID FOR BY NEWSOM 2028</span> — 
-                NOT AUTHORIZED BY ANY CANDIDATE OR CANDIDATE'S COMMITTEE. 
+                NOT AUTHORIZED BY ANY CANDIDATE OR CANDIDATE&apos;S COMMITTEE. 
                 This is a satirical website created for entertainment purposes. 
                 No actual political campaign is associated with this content.
               </p>

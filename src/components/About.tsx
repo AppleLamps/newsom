@@ -58,7 +58,7 @@ export default function About() {
               </p>
               <p>
                 From his early days running a winery funded by the Getty family to his current 
-                tenure as California's Governor, Newsom has consistently demonstrated an 
+                tenure as California&apos;s Governor, Newsom has consistently demonstrated an 
                 uncanny ability to say one thing while doing another—a skill he hopes to bring 
                 to the White House.
               </p>
@@ -97,7 +97,7 @@ export default function About() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--gold)]" aria-hidden="true">•</span>
-                  <span>Trump calls him "Newscum" and blames him personally for California's wildfires</span>
+                  <span>Trump calls him &quot;Newscum&quot; and blames him personally for California&apos;s wildfires</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[var(--gold)]" aria-hidden="true">•</span>

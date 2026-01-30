@@ -21,7 +21,7 @@ export default function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20" aria-live="polite">
           <span className="w-2 h-2 bg-[var(--gold)] rounded-full animate-pulse" aria-hidden="true" />
-          <span className="text-white/90 text-sm font-medium tracking-wide uppercase">
+          <span className="text-white/95 text-sm font-medium tracking-wide uppercase">
             Campaign 2028
           </span>
         </div>
@@ -29,14 +29,14 @@ export default function Hero() {
         {/* Main Headline */}
         <h1 id="hero-heading" className="font-[var(--font-merriweather)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-6">
           A New California
-          <span className="block text-[var(--gold)]">For America</span>
+          <span className="block text-[var(--gold)] drop-shadow-md">For America</span>
         </h1>
 
         {/* Subheadline - Satirical undertone */}
-        <p className="text-xl sm:text-2xl text-white/80 max-w-3xl mx-auto mb-4 font-light">
-          Bringing the Golden State's proven leadership to the White House.
+        <p className="text-xl sm:text-2xl text-white/90 max-w-3xl mx-auto mb-4 font-light">
+          Bringing the Golden State&apos;s proven leadership to the White House.
         </p>
-        <p className="text-lg text-white/60 max-w-2xl mx-auto mb-12 italic">
+        <p className="text-lg text-white/70 max-w-2xl mx-auto mb-12 italic">
           &ldquo;What worked for Sacramento will work for Washington.&rdquo;
         </p>
 
@@ -73,7 +73,7 @@ export default function Hero() {
               <div className="text-3xl sm:text-4xl font-bold text-[var(--gold)] mb-1" aria-label={stat.label}>
                 {stat.number}
               </div>
-              <div className="text-sm text-white/60 uppercase tracking-wider">
+              <div className="text-sm text-white/70 uppercase tracking-wider">
                 {stat.label}
               </div>
             </div>

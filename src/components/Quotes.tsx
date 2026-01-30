@@ -54,6 +54,7 @@ const quotes = [
 export default function Quotes() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const nextQuote = () => {
     if (isAnimating) return;
@@ -75,27 +76,47 @@ export default function Quotes() {
 
   // Auto-advance
   useEffect(() => {
-    const timer = setInterval(nextQuote, 8000);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion || isPaused) return;
+
+    const timer = setInterval(() => {
+      // Logic from nextQuote
+      if (!isAnimating) {
+        setIsAnimating(true);
+        setTimeout(() => {
+          setCurrentIndex((prev) => (prev + 1) % quotes.length);
+          setIsAnimating(false);
+        }, 300);
+      }
+    }, 8000);
+
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused, isAnimating]); // Added dependencies
 
   const currentQuote = quotes[currentIndex];
 
   return (
-    <section className="py-24 bg-[var(--cream)]">
+    <section className="py-24 bg-[var(--cream)]" aria-labelledby="quotes-heading">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-[var(--campaign-red)] font-semibold tracking-wider uppercase text-sm mb-4">
             Words to Remember
           </span>
-          <h2 className="font-[var(--font-merriweather)] text-4xl sm:text-5xl font-bold text-[var(--navy)] mb-6">
+          <h2 id="quotes-heading" className="font-[var(--font-merriweather)] text-4xl sm:text-5xl font-bold text-[var(--navy)] mb-6">
             In His Own Words
           </h2>
         </div>
 
         {/* Quote Card */}
-        <div className="relative bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-[var(--gray-200)]">
+        <div 
+          className="relative bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-[var(--gray-200)]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocus={() => setIsPaused(true)}
+          onBlur={() => setIsPaused(false)}
+        >
           {/* Quote Icon */}
           <div className="absolute -top-6 left-8 sm:left-12">
             <div className="w-12 h-12 bg-[var(--navy)] rounded-full flex items-center justify-center">

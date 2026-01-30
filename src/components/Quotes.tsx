@@ -97,11 +97,14 @@ export default function Quotes() {
   const currentQuote = quotes[currentIndex];
 
   return (
-    <section className="py-24 bg-[var(--cream)]" aria-labelledby="quotes-heading">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-28 bg-[var(--cream)] relative overflow-hidden" aria-labelledby="quotes-heading">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-10 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[var(--gold)]/10 blur-3xl" />
+      </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-[var(--campaign-red)] font-semibold tracking-wider uppercase text-sm mb-4">
+          <span className="inline-flex items-center gap-2 text-[var(--campaign-red)] font-semibold tracking-[0.3em] uppercase text-xs mb-4">
             Words to Remember
           </span>
           <h2 id="quotes-heading" className="font-[var(--font-merriweather)] text-4xl sm:text-5xl font-bold text-[var(--navy)] mb-6">
@@ -111,7 +114,7 @@ export default function Quotes() {
 
         {/* Quote Card */}
         <div 
-          className="relative bg-white rounded-3xl shadow-xl p-8 sm:p-12 border border-[var(--gray-200)]"
+          className="relative bg-white rounded-[32px] shadow-[0_30px_60px_rgba(15,23,42,0.12)] p-8 sm:p-12 border border-[var(--gray-200)]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onFocus={() => setIsPaused(true)}

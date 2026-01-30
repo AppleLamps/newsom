@@ -147,56 +147,116 @@ const issues = [
 ];
 
 export default function Issues() {
+  const featuredIssues = issues.slice(0, 4);
+  const additionalIssues = issues.slice(4);
+
   return (
-    <section id="issues" className="py-24 bg-[var(--cream)]" aria-labelledby="issues-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="issues" className="py-28 bg-[var(--cream)] relative overflow-hidden" aria-labelledby="issues-heading">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-24 right-10 h-64 w-64 rounded-full bg-[var(--gold)]/10 blur-3xl" />
+        <div className="absolute bottom-10 left-0 h-72 w-72 rounded-full bg-[var(--campaign-red)]/10 blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-[var(--campaign-red)] font-semibold tracking-wider uppercase text-sm mb-4">
-            The Vision
-          </span>
-          <h2 id="issues-heading" className="font-[var(--font-merriweather)] text-4xl sm:text-5xl font-bold text-[var(--navy)] mb-6">
-            Key Issues
-          </h2>
-          <p className="text-xl text-[var(--gray-600)] max-w-3xl mx-auto">
-            Gavin Newsom has transformed California. Now he wants to bring that transformation to all of America.
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10 mb-16">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 text-[var(--campaign-red)] font-semibold tracking-[0.3em] uppercase text-xs mb-4">
+              The Vision
+            </span>
+            <h2 id="issues-heading" className="font-[var(--font-merriweather)] text-4xl sm:text-5xl font-bold text-[var(--navy)] mb-6">
+              Key Issues
+            </h2>
+            <p className="text-lg sm:text-xl text-[var(--gray-600)] leading-relaxed">
+              Gavin Newsom has transformed California. Now he wants to bring that transformation to all of America.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 w-full max-w-md">
+            <div className="rounded-2xl bg-white/80 border border-white shadow-sm p-5">
+              <div className="text-2xl font-bold text-[var(--navy)]">14</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-[var(--gray-500)]">Priority Areas</div>
+            </div>
+            <div className="rounded-2xl bg-white/80 border border-white shadow-sm p-5">
+              <div className="text-2xl font-bold text-[var(--navy)]">2028</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-[var(--gray-500)]">Campaign Focus</div>
+            </div>
+          </div>
         </div>
 
-        {/* Issues Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {issues.map((issue, index) => (
+        {/* Featured Issues */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {featuredIssues.map((issue, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--gray-200)] hover:border-[var(--gold)] hover:-translate-y-1"
+              className="group relative overflow-hidden rounded-3xl bg-white border border-[var(--gray-200)] p-8 shadow-sm hover:shadow-2xl transition-all duration-300"
             >
-              {/* Icon */}
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${issue.color} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
-                <issue.icon className="w-7 h-7 text-white" aria-hidden="true" />
+              <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-br from-[var(--gold)]/10 to-transparent opacity-60" />
+              <div className="flex items-center justify-between mb-6">
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${issue.color} flex items-center justify-center shadow-md`}>
+                  <issue.icon className="w-7 h-7 text-white" aria-hidden="true" />
+                </div>
+                <span className="text-xs uppercase tracking-[0.4em] text-[var(--gray-400)]">Featured</span>
               </div>
-
-              {/* Content */}
-              <h3 className="font-[var(--font-merriweather)] text-xl font-bold text-[var(--navy)] mb-1">
+              <h3 className="font-[var(--font-merriweather)] text-2xl font-bold text-[var(--navy)] mb-2">
                 {issue.title}
               </h3>
-              <p className="text-sm text-[var(--campaign-red)] font-medium mb-3">
+              <p className="text-sm text-[var(--campaign-red)] font-semibold uppercase tracking-wide mb-4">
                 {issue.subtitle}
               </p>
-              <p className="text-[var(--gray-600)] text-sm leading-relaxed mb-4">
+              <p className="text-[var(--gray-600)] leading-relaxed mb-8">
                 {issue.description}
               </p>
-
-              {/* Stat */}
-              <div className="pt-4 border-t border-[var(--gray-200)]">
-                <div className="text-2xl font-bold text-[var(--navy)]">
+              <div className="pt-6 border-t border-[var(--gray-200)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="text-3xl font-bold text-[var(--navy)]">
                   {issue.stat}
                 </div>
-                <div className="text-xs text-[var(--gray-500)] uppercase tracking-wider">
+                <div className="text-xs text-[var(--gray-500)] uppercase tracking-[0.2em]">
                   {issue.statLabel}
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Additional Issues */}
+        <div className="rounded-3xl bg-white/70 border border-white shadow-sm p-8 sm:p-10">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-xl sm:text-2xl font-[var(--font-merriweather)] font-bold text-[var(--navy)]">
+              Additional Focus Areas
+            </h3>
+            <span className="text-xs uppercase tracking-[0.3em] text-[var(--gray-400)]">Overview</span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {additionalIssues.map((issue, index) => (
+              <div
+                key={index}
+                className="group rounded-2xl bg-white border border-[var(--gray-200)] p-6 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${issue.color} flex items-center justify-center shadow-sm`}>
+                    <issue.icon className="w-6 h-6 text-white" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h4 className="font-[var(--font-merriweather)] text-lg font-bold text-[var(--navy)]">
+                      {issue.title}
+                    </h4>
+                    <p className="text-xs uppercase tracking-[0.2em] text-[var(--campaign-red)] font-semibold">
+                      {issue.subtitle}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-sm text-[var(--gray-600)] leading-relaxed mt-4">
+                  {issue.description}
+                </p>
+                <div className="mt-4 pt-4 border-t border-[var(--gray-200)] flex items-center justify-between">
+                  <span className="text-lg font-bold text-[var(--navy)]">{issue.stat}</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--gray-500)] text-right">
+                    {issue.statLabel}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

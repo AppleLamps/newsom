@@ -4,8 +4,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--navy-dark)] text-white py-12 border-t border-white/10">
+    <footer className="bg-[var(--navy-dark)] text-white py-14 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent mb-10" aria-hidden="true" />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
@@ -31,7 +32,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-white mb-4">Campaign</h4>
+            <h4 className="font-bold text-white mb-4 tracking-wide uppercase text-xs">Campaign</h4>
             <nav role="navigation" aria-label="Footer campaign links">
               <ul className="space-y-2" role="list">
                 <li>
@@ -60,7 +61,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-bold text-white mb-4">Legal</h4>
+            <h4 className="font-bold text-white mb-4 tracking-wide uppercase text-xs">Legal</h4>
             <nav role="navigation" aria-label="Footer legal links">
               <ul className="space-y-2" role="list">
                 <li>

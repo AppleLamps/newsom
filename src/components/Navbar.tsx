@@ -76,17 +76,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-6"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-[var(--gray-200)] py-3" : "bg-transparent py-6"
         }`}
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <a href="#" className="group flex items-center gap-3 focus:outline-none" aria-label="Newsom 2028 Campaign Home">
             <div className={`transition-all duration-300 ${scrolled ? "text-[var(--navy)]" : "text-white"}`}>
-              <span className="font-serif font-black text-2xl tracking-tighter">
+              <span className="font-serif font-black text-2xl tracking-tight">
                 NEWSOM
               </span>
               <span className={`ml-1 text-xs font-bold tracking-[0.3em] uppercase ${scrolled ? "text-[var(--gold)]" : "text-[var(--gold)]"}`}>
@@ -101,7 +101,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm tracking-widest uppercase font-medium transition-colors duration-300 hover:text-[var(--gold)] ${scrolled ? "text-[var(--navy-light)]" : "text-white/90"
+                className={`text-xs tracking-[0.3em] uppercase font-semibold transition-colors duration-300 hover:text-[var(--gold)] ${scrolled ? "text-[var(--navy-light)]" : "text-white/80"
                   }`}
                 role="menuitem"
               >
@@ -111,9 +111,9 @@ export default function Navbar() {
 
             <a
               href="#donate"
-              className={`px-6 py-2 rounded-sm text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-lg ${scrolled
-                  ? "bg-[var(--navy)] text-white hover:bg-[var(--navy-light)]"
-                  : "bg-[var(--white)] text-[var(--navy)] hover:bg-[var(--gold)] hover:text-white"
+              className={`px-6 py-2 rounded-full text-xs font-bold tracking-[0.3em] uppercase transition-all duration-300 hover:shadow-lg ${scrolled
+                ? "bg-[var(--navy)] text-white hover:bg-[var(--navy-light)]"
+                : "bg-white text-[var(--navy)] hover:bg-[var(--gold)] hover:text-white"
                 }`}
             >
               Donate
@@ -141,7 +141,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[var(--navy)] transition-transform duration-300 ease-in-out transform ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 z-40 bg-gradient-to-br from-[var(--navy)] via-[var(--navy-light)] to-[var(--navy-dark)] transition-transform duration-300 ease-in-out transform ${mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         role="dialog"
         aria-modal="true"
